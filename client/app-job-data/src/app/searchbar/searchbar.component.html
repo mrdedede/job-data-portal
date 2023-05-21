@@ -1,7 +1,0 @@
-<!-- <form class="form-group" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
-    <input type="text" placeholder="Job Title; i.e: Software Engineer" class="form-control" ngModel name="Job Title">
-</form> -->
-<form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
-    <label for="job-title">Job Title</label>
-    <input id="job-title" type="text" formControlName="jobTitle">
-</form>
