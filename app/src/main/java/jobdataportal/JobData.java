@@ -13,6 +13,16 @@ public class JobData {
     private String location;
     private String[] stack;
 
+    JobData() {
+        this.company = null;
+        this.position = null;
+        this.seniority = null;
+        this.currency = null;
+        this.salary = 0;
+        this.location = null;
+        this.stack = null;
+    }
+
     public void setCompany(String company) {
         this.company = company;
     }
@@ -71,8 +81,12 @@ public class JobData {
 
     @Override
     public String toString() {
+        if (stack != null) {
+            return seniority + " " + position + " at " + company + "/" + location + "\n"
+                + salary + currency + "\n"
+                + stack.toString();
+        }
         return seniority + " " + position + " at " + company + "/" + location + "\n"
-            + salary + currency + "\n"
-            + stack.toString() ;
+            + salary + currency + "\n";
     }
 }

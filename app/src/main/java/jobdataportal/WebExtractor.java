@@ -15,18 +15,33 @@ public class WebExtractor {
         this.url = url;
     }
 
+    /**
+     * 
+     * @return
+     */
     public String getUrl() {
         return this.url;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Document getDoc() {
         return this.doc;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Elements getCurElements() {
         return this.curElements;
     }
     
+    /**
+     * 
+     */
     public void doHttpRequest() {
         try {
             Document doc = Jsoup.connect(url).get();
@@ -36,9 +51,23 @@ public class WebExtractor {
         }
     }
 
-    public void searchElements(String htmlElements) {
+    /**
+     * 
+     * @param htmlElements
+     */
+    public void searchMultipleElements(String htmlElements) {
         Elements elements = this.doc.select(htmlElements);
         this.curElements = elements;
+    }
+
+    /**
+     * 
+     * @param htmlElements
+     * @return
+     */
+    public Element searchSingleElement(String htmlElements) {
+        Element element = this.doc.selectFirst(htmlElements);
+        return element;
     }
 
 }

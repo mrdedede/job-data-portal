@@ -3,20 +3,15 @@
  */
 package jobdataportal;
 
-import org.jsoup.nodes.Element;
-
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        String url = "https://weworkremotely.com"; 
-        WebExtractor wwr = new WebExtractor(url);
-        wwr.doHttpRequest();
-        wwr.searchElements("li.feature a");
-        for (Element jobPosting : wwr.getCurElements()) {
-            System.out.println(jobPosting.attr("href"));
+        JobExtractorService service = new JobExtractorService();
+        for (JobData job : service.getWWRJobs()) {
+            System.out.println(job.toString());
         }
     }
 }
