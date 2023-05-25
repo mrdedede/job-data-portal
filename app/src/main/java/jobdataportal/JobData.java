@@ -4,14 +4,17 @@
 
 package jobdataportal;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JobData {
     private String company;
     private String position;
     private String seniority;
     private String currency;
     private double salary;
-    private String location;
-    private String[] stack;
+    private List<String> location;
+    private List<String> stack;
 
     JobData() {
         this.company = null;
@@ -64,29 +67,40 @@ public class JobData {
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        if(this.location == null) {
+            this.location = new ArrayList<>();
+            this.location.add(location);
+        } else {
+            this.location.add(location);
+        }
     }
 
-    public String getLocation() {
+    public List<String> getLocation() {
         return this.location;
     }
 
-    public void setStack(String[] stack) {
-        this.stack = stack;
+    public void setStack(String stack) {
+        if (this.stack == null) {
+            this.stack = new ArrayList<>();
+            this.stack.add(stack);
+        } else {
+            this.stack.add(stack);
+        }
     }
 
-    public String[] getStack() {
+    public List<String> getStack() {
         return this.stack;
     }
 
     @Override
     public String toString() {
-        if (stack != null) {
-            return seniority + " " + position + " at " + company + "/" + location + "\n"
+        try {
+            return seniority + " " + position + " at " + company + " / " + location.toString() + "\n"
                 + salary + currency + "\n"
                 + stack.toString();
+        } catch (NullPointerException e) {
+            return seniority + " " + position + " at " + company + "\n"
+                + salary + currency;
         }
-        return seniority + " " + position + " at " + company + "/" + location + "\n"
-            + salary + currency + "\n";
     }
 }

@@ -9,7 +9,6 @@ import org.jsoup.select.*;
 public class WebExtractor {
     private String url;
     private Document doc;
-    private Elements curElements;
 
     WebExtractor(String url) {
         this.url = url;
@@ -30,14 +29,6 @@ public class WebExtractor {
     public Document getDoc() {
         return this.doc;
     }
-
-    /**
-     * 
-     * @return
-     */
-    public Elements getCurElements() {
-        return this.curElements;
-    }
     
     /**
      * 
@@ -55,9 +46,9 @@ public class WebExtractor {
      * 
      * @param htmlElements
      */
-    public void searchMultipleElements(String htmlElements) {
+    public Elements searchMultipleElements(String htmlElements) {
         Elements elements = this.doc.select(htmlElements);
-        this.curElements = elements;
+        return elements;
     }
 
     /**

@@ -12,8 +12,7 @@ public class JobDataTest {
         mockJobData.setPosition("Software Engineer");
         mockJobData.setSalary(100000);
         mockJobData.setSeniority("Senior");
-        String[] stack = {"Java"};
-        mockJobData.setStack(stack);
+        mockJobData.setStack("Java");
         return mockJobData;
     }
 

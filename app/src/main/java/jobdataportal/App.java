@@ -4,13 +4,15 @@
 package jobdataportal;
 
 public class App {
+    
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        JobExtractorService service = new JobExtractorService();
-        for (JobData job : service.getWWRJobs()) {
+        String url = "https://weworkremotely.com";
+        JobExtractorWWR service = new JobExtractorWWR();
+        for (JobData job : service.getJobObjects(url)) {
             System.out.println(job.toString());
         }
     }
